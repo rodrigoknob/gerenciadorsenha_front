@@ -5,15 +5,15 @@ import axios from 'axios'
 class Login extends React.Component {
 
   state = {
-    senhaAtual: ''
+    senhaAtual: '',
+    senhaCliente: ''
   }
-
 
   gerarSenha = (tipo) => {
     axios.post('http://localhost:8080/api/gerarSenha', {
       tipo
     }).then( response => {
-      console.log(response);
+      this.setState({senhaCliente: response.data.senhaFromatada})
     }).catch( error => {
       console.log(error.response);
     })
@@ -21,7 +21,7 @@ class Login extends React.Component {
 
   tick() {
     axios.get('http://localhost:8080/api/senha')
-    .then( response => {
+    .then( response => {      
       this.setState({senhaAtual: response.data})  
     }).catch( error => {
       console.log(error.response);
@@ -37,7 +37,6 @@ class Login extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6" style={ {position: 'relative', left: '300px'} }>
-            
               <div className="bs-docs-section">
               <Card title="Senha Atual">
                 <div className="row">
@@ -49,7 +48,6 @@ class Login extends React.Component {
             </div>
             <br/>
             <div className="bs-docs-section">
-              
               <Card title="Gerar senha">
                 <div className="row">
                     <div className="col-lg-6 d-flex justify-content-center">
@@ -65,11 +63,21 @@ class Login extends React.Component {
                     </div>
                 </div>
               </Card>
+
+              <br/>
+                    <div className="bs-docs-section">
+              <Card title="Sua Senha">
+                <div className="row">
+                    <div className="col-lg-6 d-flex justify-content-center">
+                      { this.state.senhaCliente }
+                    </div>
+                </div>
+              </Card>
+            </div>
             </div>
           </div>
         </div>  
       </div>
-
     )
   }
 }
