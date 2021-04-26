@@ -1,10 +1,17 @@
 import React from 'react'
 import Card from '../components/card'
 
+import axios from 'axios'
 class Login extends React.Component {
 
   gerarSenha = (tipo) => {
-    console.log('senha gerada', tipo)
+    axios.post('http://localhost:8080/api/gerarSenha', {
+      tipo
+    }).then( response => {
+      console.log(response);
+    }).catch( error => {
+      console.log(error.response);
+    })
   }
 
   render () {
