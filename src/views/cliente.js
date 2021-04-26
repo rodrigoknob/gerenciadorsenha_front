@@ -4,6 +4,11 @@ import Card from '../components/card'
 import axios from 'axios'
 class Login extends React.Component {
 
+  state = {
+    senhaAtual: ''
+  }
+
+
   gerarSenha = (tipo) => {
     axios.post('http://localhost:8080/api/gerarSenha', {
       tipo
@@ -12,6 +17,19 @@ class Login extends React.Component {
     }).catch( error => {
       console.log(error.response);
     })
+  }
+
+  tick() {
+    axios.get('http://localhost:8080/api/senha')
+    .then( response => {
+      this.setState({senhaAtual: response.data})  
+    }).catch( error => {
+      console.log(error.response);
+    })
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 3000);
   }
 
   render () {
@@ -24,7 +42,7 @@ class Login extends React.Component {
               <Card title="Senha Atual">
                 <div className="row">
                     <div className="col-lg-6 d-flex justify-content-center">
-                      OI
+                      { this.state.senhaAtual }
                     </div>
                 </div>
               </Card>
