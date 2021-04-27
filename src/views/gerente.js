@@ -1,35 +1,33 @@
 import React from 'react'
-import Card from '../components/card'
 
 import axios from 'axios'
-class Cliente extends React.Component {
+import Card from '../components/card'
 
-  state = {
-    senhaAtual: '',
-    senhaCliente: ''
+class Gerente extends React.Component {
+
+    state = {
+      senhaCliente: ''
   }
 
-  gerarSenha = (tipo) => {
-    axios.post('http://localhost:8080/api/gerarSenha', {
-      tipo
+
+  proximaSenha = () => {
+    axios.post('http://localhost:8080/api/proximaSenha', {
+      
     }).then( response => {
+      console.log(response.data)
       this.setState({senhaCliente: response.data.senhaFromatada})
     }).catch( error => {
       console.log(error.response);
     })
   }
 
-  tick() {
-    axios.get('http://localhost:8080/api/senha')
-    .then( response => {      
-      this.setState({senhaAtual: response.data})  
-    }).catch( error => {
+  zerarSenha = () => {
+    axios.delete('http://localhost:8080/api/gerarSenha', {
+      
+    })
+    .catch( error => {
       console.log(error.response);
     })
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 3000);
   }
 
   render () {
@@ -41,7 +39,7 @@ class Cliente extends React.Component {
               <Card title="Senha Atual">
                 <div className="row">
                     <div className="col-lg-6 d-flex justify-content-center">
-                      { this.state.senhaAtual }
+                      { this.state.senhaCliente }
                     </div>
                 </div>
               </Card>
@@ -52,28 +50,18 @@ class Cliente extends React.Component {
                 <div className="row">
                     <div className="col-lg-6 d-flex justify-content-center">
                       <div className="bs-component">
-                        <button onClick={() =>  this.gerarSenha('N')} className="btn btn-success">Normal</button>
+                        <button onClick={() =>  this.proximaSenha()} className="btn btn-success">Próxima Senha</button>
                       </div>
                     </div>
 
                     <div className="col-lg-6">
                       <div className="bs-component d-flex justify-content-center">
-                        <button onClick={() =>  this.gerarSenha('P')} className="btn btn-info">Preferencial</button>
+                        <button onClick={() =>  this.zerarSenha()} className="btn btn-danger">Zerar senhas</button>
                       </div>
                     </div>
                 </div>
               </Card>
-
               <br/>
-                    <div className="bs-docs-section">
-              <Card title="Sua Senha">
-                <div className="row">
-                    <div className="col-lg-6 d-flex justify-content-center">
-                      { this.state.senhaCliente }
-                    </div>
-                </div>
-              </Card>
-            </div>
             </div>
           </div>
         </div>  
@@ -82,4 +70,4 @@ class Cliente extends React.Component {
   }
 }
 
-export default Cliente
+export default Gerente
