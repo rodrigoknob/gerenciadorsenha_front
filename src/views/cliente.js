@@ -12,7 +12,7 @@ class Cliente extends React.Component {
   }
 
   gerarSenha = (tipo) => {
-    axios.post('http://localhost:8080/api/gerarSenha', {
+    axios.post('https://geradorsenha-api.herokuapp.com/api/gerarSenha', {
       tipo
     }).then( response => {
       this.setState({senhaCliente: response.data.senhaFormatada})

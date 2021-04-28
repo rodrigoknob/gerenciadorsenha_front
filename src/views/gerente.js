@@ -5,8 +5,10 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 class Gerente extends React.Component {
 
+  
+
   proximaSenha = () => {
-    axios.post('http://localhost:8080/api/proximaSenha', {
+    axios.post('https://geradorsenha-api.herokuapp.com/api/proximaSenha', {
       
     }).then( response => {
       this.setState({senhaAtual: response.data.senhaFormatada})
@@ -16,7 +18,7 @@ class Gerente extends React.Component {
   }
 
   zerarSenha = () => {
-    axios.delete('http://localhost:8080/api/senhas', {
+    axios.delete('https://geradorsenha-api.herokuapp.com/api/senhas', {
     })
     .catch( error => {
       

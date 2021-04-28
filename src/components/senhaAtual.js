@@ -11,7 +11,7 @@ class Cliente extends React.Component {
   }
 
   tick() {
-    axios.get('http://localhost:8080/api/senha')
+    axios.get('https://geradorsenha-api.herokuapp.com/api/senha')
     .then( response => {      
       this.setState({senhaAtual: response.data})  
     }).catch( error => {
