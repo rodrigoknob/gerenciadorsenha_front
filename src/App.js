@@ -8,12 +8,13 @@ import 'primereact/resources/themes/saga-blue/theme.css'
 import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
 
+import './custom.css'
 
 class App extends React.Component {
   render () {
     return (
-      <div>
-        <Routes/>
+      <div className="App">
+        <Routes />
       </div>
     )
   }

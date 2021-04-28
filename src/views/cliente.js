@@ -41,8 +41,8 @@ class Cliente extends React.Component {
 
     return (
 
-      <div >
-        <div className="container" style={{ marginTop: '15em'}} >
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div className="container" >
           <Card title="Área do Cliente" style={{  marginBottom: '2em' }}>
 
             <div className="row">
