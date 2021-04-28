@@ -12,7 +12,7 @@ function Routes(){
     return(
         <BrowserRouter>
             <Switch>
-                <Route path="/cliente" component={Cliente} />
+                <Route path="/" exact={true} component={Cliente} />
                 <Route path="/gerente" component={Gerente} />
             </Switch>        
         </BrowserRouter>
