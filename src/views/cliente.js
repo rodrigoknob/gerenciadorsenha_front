@@ -8,7 +8,6 @@ import axios from 'axios'
 class Cliente extends React.Component {
 
   state = {
-    senhaAtual: '',
     senhaCliente: ''
   }
 
@@ -22,30 +21,15 @@ class Cliente extends React.Component {
     })
   }
 
-  tick() {
-    axios.get('http://localhost:8080/api/senha')
-    .then( response => {      
-      this.setState({senhaAtual: response.data})  
-    }).catch( error => {
-      console.log(error.response);
-    })
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 3000);
-  }
-
-  
-
   render () {
 
     return (
 
-      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-        <div className="container" >
+      <div >
+        <div className="container" style={{width: '80vh'}} >
           <Card title="Área do Cliente" style={{  marginBottom: '2em' }}>
 
-            <div className="row">
+            <div className="row" style={{alignItems: 'center', justifyContent: 'center'}}>
               <div className="col-md-6">
                 <Card title="Gerar Senha"  >
                   <div className="container">
@@ -61,16 +45,13 @@ class Cliente extends React.Component {
                 </Card>
               </div>
 
-              <div className="col-md-6">
-                <Card title="Senha Atual">
-                  { this.state.senhaAtual }
-                </Card>
-              </div>
+          
             </div>
 
-            <div className="row" style={{marginTop: '1em'}}>
+            <div className="row" style={{marginTop: '1em', alignItems: 'center', justifyContent: 'center'}}>
               <div className="col-md-6">
                 <Card title="Sua Senha">
+                  
                   { this.state.senhaCliente }
                 </Card>
               </div>

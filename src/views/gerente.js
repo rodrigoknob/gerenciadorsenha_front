@@ -5,11 +5,6 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 class Gerente extends React.Component {
 
-    state = {
-      senhaAtual: ''
-    }
-
-
   proximaSenha = () => {
     axios.post('http://localhost:8080/api/proximaSenha', {
       
@@ -22,8 +17,6 @@ class Gerente extends React.Component {
 
   zerarSenha = () => {
     axios.delete('http://localhost:8080/api/senhas', {
-    }).then(res => {
-      this.setState({senhaAtual: ''})
     })
     .catch( error => {
       
@@ -33,11 +26,10 @@ class Gerente extends React.Component {
 
   render () {
     return (
-      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-      <div className="container"  >
+      <div >
+      <div  className="container" style={{width: '80vh'}} >
         <Card title="Área do Gerente" style={{  marginBottom: '2em' }}>
-
-          <div className="row">
+          <div className="row" style={{alignItems: 'center', justifyContent: 'center'}}>
             <div className="col-md-6">
               <Card title="Controle das senhas"  >
                 <div className="container">
@@ -52,15 +44,9 @@ class Gerente extends React.Component {
                 </div>
               </Card>
             </div>
-
-            <div className="col-md-6">
-              <Card title="Senha Atual">
-                { this.state.senhaAtual }
-              </Card>
-            </div>
           </div>
         </Card>
-      </div>
+      </div >
       </div>
     )
   }
