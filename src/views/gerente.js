@@ -9,7 +9,7 @@ class Gerente extends React.Component {
     axios.post('http://localhost:8080/api/proximaSenha', {
       
     }).then( response => {
-      this.setState({senhaAtual: response.data.senhaFromatada})
+      this.setState({senhaAtual: response.data.senhaFormatada})
     }).catch( error => {
       console.log(error.response);
     })

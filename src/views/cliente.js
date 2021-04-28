@@ -15,7 +15,7 @@ class Cliente extends React.Component {
     axios.post('http://localhost:8080/api/gerarSenha', {
       tipo
     }).then( response => {
-      this.setState({senhaCliente: response.data.senhaFromatada})
+      this.setState({senhaCliente: response.data.senhaFormatada})
     }).catch( error => {
       console.log(error.response);
     })
