@@ -1,7 +1,10 @@
 import React from 'react'
-import Card from '../components/card'
 
+import { Card } from 'primereact/card';
+
+import { Button } from 'primereact/button';
 import axios from 'axios'
+
 class Cliente extends React.Component {
 
   state = {
@@ -32,51 +35,48 @@ class Cliente extends React.Component {
     this.interval = setInterval(() => this.tick(), 3000);
   }
 
+  
+
   render () {
+
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6" style={ {position: 'relative', left: '300px'} }>
-              <div className="bs-docs-section">
-              <Card title="Senha Atual">
-                <div className="row">
-                    <div className="col-lg-6 d-flex justify-content-center">
-                      { this.state.senhaAtual }
-                    </div>
-                </div>
-              </Card>
-            </div>
-            <br/>
-            <div className="bs-docs-section">
-              <Card title="Gerar senha">
-                <div className="row">
-                    <div className="col-lg-6 d-flex justify-content-center">
-                      <div className="bs-component">
-                        <button onClick={() =>  this.gerarSenha('N')} className="btn btn-success">Normal</button>
+
+      <div >
+        <div className="container" style={{ marginTop: '15em'}} >
+          <Card title="Área do Cliente" style={{  marginBottom: '2em' }}>
+
+            <div className="row">
+              <div className="col-md-6">
+                <Card title="Gerar Senha"  >
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <Button label="Normal" onClick={() =>  this.gerarSenha('N')}></Button> 
+                      </div>
+                      <div className="col-md-6">
+                        <Button label="Preferencial"  onClick={() =>  this.gerarSenha('P')} className="p-button-danger" />
                       </div>
                     </div>
+                  </div>
+                </Card>
+              </div>
 
-                    <div className="col-lg-6">
-                      <div className="bs-component d-flex justify-content-center">
-                        <button onClick={() =>  this.gerarSenha('P')} className="btn btn-info">Preferencial</button>
-                      </div>
-                    </div>
-                </div>
-              </Card>
+              <div className="col-md-6">
+                <Card title="Senha Atual">
+                  { this.state.senhaAtual }
+                </Card>
+              </div>
+            </div>
 
-              <br/>
-                    <div className="bs-docs-section">
-              <Card title="Sua Senha">
-                <div className="row">
-                    <div className="col-lg-6 d-flex justify-content-center">
-                      { this.state.senhaCliente }
-                    </div>
-                </div>
-              </Card>
-            </div>
-            </div>
-          </div>
-        </div>  
+            <div className="row" style={{marginTop: '1em'}}>
+              <div className="col-md-6">
+                <Card title="Sua Senha">
+                  { this.state.senhaCliente }
+                </Card>
+              </div>
+            </div>            
+          </Card>
+        </div>
       </div>
     )
   }
