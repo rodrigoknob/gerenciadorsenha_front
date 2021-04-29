@@ -1,7 +1,10 @@
 import axios from 'axios'
 
+// backend heroku  'https://geradorsenha-api.herokuapp.com'
+// local:  http://localhost:8080 
+
 const httpCliente =  axios.create({
-  baseURL: 'https://geradorsenha-api.herokuapp.com'
+  baseURL: 'http://localhost:8080'
 })
 
 class ApiService {
