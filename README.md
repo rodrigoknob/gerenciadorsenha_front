@@ -17,10 +17,30 @@ Depois vá até o diretório src/app/apiservice.js
 
 e mude o baseURL na linha 4 para
 
-### ` http://localhost::8080 `
+### ` http://localhost:8080 `
 
 
 Se o backend estiver funcionando, é só rodar
 
 ### `yarn start `
 
+
+ao rodar yarn start, acesse a URL que está disponível no terminal
+
+### ` Como Cliente`
+
+Vai abrir a URL na página do cliente, caso não abrir, acesse  http://localhost:8080
+onde será possível ele visualizar a senha atual (que está sendo atendida)
+
+após ele clicar em um dos botões (Preferencial ou Normal), aparecerá a senha gerada 
+para usuário no campo Sua Senha
+
+### `Como gerente `
+
+para acessar a área do gerente, pega a url atual, e adicione ao final /gerente
+ex: http://localhost:8080/gerente
+
+Ao topo será possível observar qual a senha atual,
+e abaixo um painel onde é possível chamar a próxima senha ou zerar a contagem das senhas (isso excluirá todas as senhas que estão em espera)
+
+Se caso não houver mais senhas para serem chamadas, o campo de senha atual ficará em branco
