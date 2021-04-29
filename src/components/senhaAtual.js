@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { Card } from 'primereact/card';
-import axios from 'axios'
 
+import SenhaService from '../app/service/senhaService'
 
 class Cliente extends React.Component {
 
@@ -10,8 +10,13 @@ class Cliente extends React.Component {
     senhaAtual: ''
   }
 
+  constructor() {
+    super()
+    this.service = new SenhaService()
+  }
+
   tick() {
-    axios.get('https://geradorsenha-api.herokuapp.com/api/senha')
+    this.service.getSenhaAtual()
     .then( response => {      
       this.setState({senhaAtual: response.data})  
     }).catch( error => {

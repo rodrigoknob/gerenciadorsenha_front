@@ -1,16 +1,20 @@
 import React from 'react'
 
-import axios from 'axios'
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
+
+import SenhaService from '../app/service/senhaService'
 class Gerente extends React.Component {
 
   
+  constructor () {
+    super() 
+    this.service = new SenhaService()
+  }
 
   proximaSenha = () => {
-    axios.post('https://geradorsenha-api.herokuapp.com/api/proximaSenha', {
-      
-    }).then( response => {
+    this.service.proximaSenha()  
+    .then( response => {
       this.setState({senhaAtual: response.data.senhaFormatada})
     }).catch( error => {
       console.log(error.response);
@@ -18,10 +22,8 @@ class Gerente extends React.Component {
   }
 
   zerarSenha = () => {
-    axios.delete('https://geradorsenha-api.herokuapp.com/api/senhas', {
-    })
+    this.service.zerarSenha()
     .catch( error => {
-      
       console.log(error.response);
     })
   }
